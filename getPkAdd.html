@@ -1,0 +1,47 @@
+<html>
+
+<head>
+	<script src="js/build.js"></script>
+	<script src="js/ethereumjs-util.js"></script>
+	<script src="js/sjcl-bip39.js"></script>
+	<script src="js/wordlist_english.js"></script>
+	<script src="js/jsbip39.js"></script>
+	<script src="js/bitcoinjs-3.3.2.js"></script>
+	
+	<script>
+		function create(){
+		
+			//! 传入助记词创建地址/导入助记词创建地址(12个助记词)	
+			var res =newAddress("test test test test test test test test test test test test")
+			console.log("..."+res)
+			
+			
+			//! 导入私钥	
+			var res_1 =importPriKey("60799075f1875dbb78b6c31798a9e86aa9de23970e7bb9566f711d2b47d7a79c")
+			console.log("......"+res_1)
+			
+			//! 转账签名
+			var fromaddr="填发送地址"
+			var toaddr="填接收地址"
+			var contractAddress=""				//! 转FCM,填空串
+			var amount=6000000					//! 转账数量,精度8,	例：1*10^8
+			var fee=6000000						//! 手续费			转FCM 固定填6000000
+			var nonce="填nonce值"
+			var remark="填备注信息"
+			var pri=""							//! 填私钥
+			var pub=""							//! 填公钥
+		    var res_2 =transactionSignature(fromaddr, toaddr,amount,fee,nonce, remark,pri,pub,contractAddress)
+			console.log("...sign..."+res_2)
+		}
+		
+	</script>
+</head>
+<body>
+	<button class="btn generate" onclick="create()">生成</button>
+	
+   
+</body>
+
+
+
+</html>
